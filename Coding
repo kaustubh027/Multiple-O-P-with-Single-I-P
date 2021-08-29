@@ -1,0 +1,131 @@
+# controlling multiple output using single input
+
+import RPi.GPIO as g
+import time
+g.setmode(g.BOARD)
+g.setwarnings(False)
+
+g.setup(40,g.IN)  # Button connected
+
+g.setup(23,g.OUT) # LED 1 connected
+g.setup(24,g.OUT) # LED 2 Connected
+g.setup(26,g.OUT) # LED 3 Connected
+
+def state_zero() # initial state
+def state_one()  # when button is pressed 1st time
+def state_two()  # when button is pressed 2nd time
+def state_three() # when button is pressed 3rd time
+def state_four()  # when button is pressed 4th time
+
+def Led_one():
+    print("1st LED ON")
+    g.output(23,1)
+    g.output(24,0)
+    g.output(25,0)
+    
+def Led_two():
+    print("2nd LED ON")  # 2nd LED On
+    g.output(23,1)
+    g.output(24,1)
+    g.output(25,0)
+    
+def Led_three():
+    print("3rd LED ON")  # 3rd LED On
+    g.output(23,1)
+    g.output(24,1)
+    g.output(25,1)
+    
+def none():
+    print("ALL LED'S OFF")  # All LED Off
+    g.output(23,0)
+    g.output(24,0)
+    g.output(25,0)
+
+while True:
+    # For 1st LED
+    lst1 = []
+    for i in range(0,1):
+        button = int(input("Press the Button "))
+        button = g.input(40)
+        lst1.append(button)
+    
+        if lst1[0] == 1:
+            #print("1st LED ON") # 1st LED on
+            Led_one()   # Function call
+        else:
+            none()    # Function call
+            
+    lst2 = []       
+    for i in range(0,1):
+        button = int(input("Press the Button "))
+        button = g.input(40)
+        lst2.append(button)
+    
+        if lst2[0] == 0:
+            #print("1st remains on")
+            Led_one()
+        else:
+            none()
+        
+    # For 2nd LED
+    lst3 = []       
+    for i in range(0,1):
+        button = int(input("Press the Button "))     
+        button = g.input(40)
+        lst3.append(button)
+    
+        if lst3[0] == 1:
+            #print("2nd LED ON")  # 2nd LED On
+            Led_two()
+        else:
+            none()
+        
+    lst4 = []       
+    for i in range(0,1):
+        button = int(input("Press the Button "))     
+        button = g.input(40)
+        lst4.append(button)
+    
+        if lst4[0] == 0:
+            #print("2nd remains on")
+            Led_two()
+        else:
+            none()
+        
+    # for 3rd LED
+    lst5 = []       
+    for i in range(0,1):
+        button = int(input("Press the Button "))
+        button = g.input(40)
+        lst5.append(button)
+    
+        if lst5[0] == 1:
+          #  print("3rd LED ON")  # 3rd LED On
+            Led_three()
+        else:
+            none()
+        
+    lst6 = []       
+    for i in range(0,1):
+        button = int(input("Press the Button "))     
+        button = g.input(40)
+        lst6.append(button)
+    
+        if lst6[0] == 0:
+         #    print("3rd remains on")
+            Led_three()
+        else:
+            none()
+        
+    lst7 = []       
+    for i in range(0,1):
+        button = int(input("Press the Button "))     
+        button = g.input(40)
+        lst7.append(button)
+    
+        if lst7[0] == 1:
+         #   print("all off")
+            none()
+        else:
+            none()
+
